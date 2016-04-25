@@ -2,6 +2,22 @@
 
 this project is based on the angular-seed & includes the CalculatorApp project + CalcControllerSpec file to run some initial tests against it
 
+## Running the project ##
+
+if you have lite-server installed > navigate to the /app folder in commandline & type
+
+	lite-server
+
+## Running the Unit Tests ##
+
+make sure you have karma command line installed
+
+	npm install -g karma-cli
+
+than navigate to the project root folder and type:
+
+	karma start karma.conf.js
+
 # angular-seed — the seed for AngularJS apps
 
 This project is based on an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
