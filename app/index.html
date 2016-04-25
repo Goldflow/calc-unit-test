@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app="myApp">
+   
+   <head>
+    <title>
+        Calculator App
+    </title>
+   </head>
+   
+  <body>
+
+  <div ng-controller="CalcController" style="padding: 30px;">
+    <div class="container">
+      <h1>Calculator</h1>
+      <hr />
+      <form>
+        <fieldset>
+		  <!-- Here we create two input fields, one for each variable -->
+          <label for="factorOne">Factor 1</label>
+          <input id="factorOne" ng-model="calcObject.factor1" type="number" placeholder="The first factor..." />
+          <br/>    <br/>
+          <label for="factorTwo">Factor 2:</label>
+          <input id="factorTwo" ng-model="calcObject.factor2" type="number" placeholder="Second factor..." />
+
+          <hr/>
+          <br/>
+		   <!-- Here below we will use two different methods to do the same thing -->
+		   <!-- first using a simple expression -->
+          <div for="sumAbove" ng-non-bindable="true">Sum of both factors using bracket expression <br />
+            <i>{{calcObject.factor1 + calcObject.factor2}}</i></div><br/>
+          <span  id="sumAbove"> {{calcObject.factor1 + calcObject.factor2}}</span>
+          <br/>    <br/>
+		  <!-- second by using the function defined in the scope -->
+          <div for="sumAbove" ng-non-bindable="true">Sum of both factors using function defined in $scope  <br/><i>{{getSum(calcObject.factor1,calcObject.factor2)}}</i></div><br/>
+          <span  id="sumAbove"> {{getSum(calcObject.factor1,calcObject.factor2)}}</span>
+          <br/>    <br/>
+		 <!-- using a different function defined in the scope -->
+          <div for="sumAbove" ng-non-bindable="true">Sum of both factors using function defined in $scope  <br/><i>{{getDiff(calcObject.factor1,calcObject.factor2)}}</i></div><br/>
+          <span  id="sumAbove"> {{getDiff(calcObject.factor1,calcObject.factor2)}}</span>
+          <br/>    <br/>
+
+        </fieldset>
+
+        <br />
+        <br />
+
+      </form>
+    </div>
+  </div>
+
+
+ 
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="CalcController.js"></script>
+</body>
+</html>
