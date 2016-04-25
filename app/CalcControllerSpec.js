@@ -17,6 +17,7 @@ describe('CalcController', function () {
     //the idea is that the sentence of the testname starts with "it"
     //e.g.: it() should return true to make the test pass
 	
+    //9. we maken placeholder waarin we onze controller gaan opslaan en onze scope
 	var createController, scope;
    
    //7.beforeEach runs before each test inside that describe
@@ -33,17 +34,22 @@ describe('CalcController', function () {
     
  
  
-    //9. loading the controller constructor
+    //10. loading the controller constructor
     beforeEach(
         //inject function part of Angular
         //inject functie verwacht een callback functie als parameter
-        inject(//10. deze callback functie
+        inject(
+            //11. de callback functie op zijn beurt verwacht $rootScope service (die een blank scope kan maken)
+            // & de $controller service (die de controller kan opbouwen)
             function($rootScope, $controller){
+                //we maken een blank scope
                 scope = $rootScope.$new();
-				
+				//en we maken een gemockte versie van onze controller
                 createController = function(){
-					return $controller( 
-				'CalcController', {'$scope': scope}); 
+                    //13. laten we eens kijken naar hoe de controller eruit ziet en wat hij verwacht...
+					return $controller('CalcController', {'$scope': scope}); 
+                    //de $controller functie zal de constructor opzoeken met die naam 
+                    // en de scope van de controller gelijkzetten aan onze blank scope
 				};
 				
         }));
@@ -56,7 +62,8 @@ describe('CalcController', function () {
     it('should return the sum of the two passed parameters calculated with getSum(factor1,factor2)',
          //4. make a habit of writing long names, it's good to have a good description of what the test does
          function (){
-			 //11.
+			 //14. we moeten enkel de constructor aanroepen 
+             //om de functie getSum() in onze scope hier te kunnen laden
 			 var controller = createController();
               
              //5. in here comes the actual test
